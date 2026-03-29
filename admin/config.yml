@@ -1,0 +1,27 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "public/images/gallery"
+public_folder: "/images/gallery"
+
+# Use Netlify Identity for authentication
+publish_mode: editorial_workflow
+
+collections:
+  - name: "gallery"
+    label: "Gallery Photos"
+    label_singular: "Photo"
+    folder: "_data/gallery"
+    create: true
+    delete: true
+    slug: "{{slug}}"
+    identifier_field: title
+    summary: "{{title}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string", required: false, hint: "Optional caption shown in lightbox" }
+      - { label: "Photo", name: "image", widget: "image", required: true, hint: "Upload your photo here" }
+      - { label: "Featured (show in hero slideshow)", name: "featured", widget: "boolean", default: false, required: false }
+      - { label: "Date", name: "date", widget: "datetime", required: false }
+      - { label: "Category", name: "category", widget: "select", required: false,
+          options: ["Sports", "Events", "Portraits", "Nature", "Other"] }

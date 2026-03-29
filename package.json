@@ -1,0 +1,12 @@
+{
+  "name": "kdrpics",
+  "version": "1.0.0",
+  "description": "KDRPics Photography Portfolio",
+  "scripts": {
+    "build": "node build-gallery.js",
+    "start": "node build-gallery.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
