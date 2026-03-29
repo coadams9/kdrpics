@@ -3,585 +3,136 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>KDRPics — Photography</title>
+  <title>KDR Moments &amp; Milestones Photography</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --black: #0a0a0a;
-      --white: #f5f2ee;
-      --accent: #c8a97e;
-      --mid: #1e1e1e;
-      --text: #3a3530;
-      --light: #e8e4de;
-    }
-
+    :root { --black: #0a0a0a; --white: #f5f2ee; --accent: #c8a97e; --mid: #1e1e1e; --text: #3a3530; --light: #e8e4de; }
     html { scroll-behavior: smooth; }
-
-    body {
-      background: var(--black);
-      color: var(--white);
-      font-family: 'Montserrat', sans-serif;
-      font-weight: 300;
-      overflow-x: hidden;
-    }
-
-    /* ── NAV ── */
-    nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 100;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 1.5rem 3rem;
-      background: linear-gradient(to bottom, rgba(10,10,10,0.95) 0%, transparent 100%);
-      transition: background 0.4s;
-    }
-    nav.scrolled {
-      background: rgba(10,10,10,0.97);
-      border-bottom: 1px solid rgba(200,169,126,0.15);
-    }
-    .nav-logo {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.7rem;
-      font-weight: 300;
-      letter-spacing: 0.12em;
-      color: var(--white);
-      text-decoration: none;
-    }
-    .nav-logo span { color: var(--accent); }
+    body { background: var(--black); color: var(--white); font-family: 'Montserrat', sans-serif; font-weight: 300; overflow-x: hidden; }
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 1.5rem 3rem; background: linear-gradient(to bottom, rgba(10,10,10,0.95) 0%, transparent 100%); transition: background 0.4s; }
+    nav.scrolled { background: rgba(10,10,10,0.97); border-bottom: 1px solid rgba(200,169,126,0.15); }
+    .nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.7rem; font-weight: 300; letter-spacing: 0.12em; color: var(--white); text-decoration: none; }
+    .nav-logo span { color: var(--accent); font-size: 1.1rem; letter-spacing: 0.1em; }
     .nav-links { display: flex; gap: 2.5rem; list-style: none; }
-    .nav-links a {
-      color: rgba(245,242,238,0.7);
-      text-decoration: none;
-      font-size: 0.72rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      transition: color 0.3s;
-    }
+    .nav-links a { color: rgba(245,242,238,0.7); text-decoration: none; font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; transition: color 0.3s; }
     .nav-links a:hover { color: var(--accent); }
-
-    /* ── HERO SLIDESHOW ── */
-    #hero {
-      position: relative;
-      height: 100vh;
-      overflow: hidden;
-    }
-    .slide {
-      position: absolute;
-      inset: 0;
-      opacity: 0;
-      transition: opacity 1.2s ease;
-      background-size: cover;
-      background-position: center;
-    }
+    #hero { position: relative; height: 100vh; overflow: hidden; }
+    .slide { position: absolute; inset: 0; opacity: 0; transition: opacity 1.2s ease; background-size: cover; background-position: center; }
     .slide.active { opacity: 1; }
-
-    /* Placeholder slides with gradient art until real photos are uploaded */
     .slide-1 { background: linear-gradient(135deg, #1a1008 0%, #3d2b1f 40%, #5c3d2e 70%, #1a0f08 100%); }
     .slide-2 { background: linear-gradient(135deg, #080e1a 0%, #0f1f3d 40%, #1a3050 70%, #080d18 100%); }
     .slide-3 { background: linear-gradient(135deg, #0a1208 0%, #1a3020 40%, #2e4a1e 70%, #081008 100%); }
-
-    .slide::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to bottom, rgba(10,10,10,0.2) 0%, rgba(10,10,10,0.5) 100%);
-    }
-
-    /* Slide placeholder content (hidden when real images load) */
-    .slide-placeholder {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 1;
-    }
-    .slide-placeholder svg {
-      width: 80px;
-      height: 80px;
-      opacity: 0.15;
-    }
-
-    .hero-text {
-      position: absolute;
-      bottom: 12%;
-      left: 50%;
-      transform: translateX(-50%);
-      text-align: center;
-      z-index: 10;
-      white-space: nowrap;
-    }
-    .hero-text h1 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(3rem, 8vw, 7rem);
-      font-weight: 300;
-      letter-spacing: 0.15em;
-      line-height: 1;
-      text-shadow: 0 2px 40px rgba(0,0,0,0.6);
-    }
-    .hero-text h1 em {
-      font-style: italic;
-      color: var(--accent);
-    }
-    .hero-text p {
-      margin-top: 0.8rem;
-      font-size: 0.7rem;
-      letter-spacing: 0.35em;
-      text-transform: uppercase;
-      color: rgba(245,242,238,0.55);
-    }
-
-    /* Slide dots */
-    .slide-dots {
-      position: absolute;
-      bottom: 2rem;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      gap: 0.6rem;
-      z-index: 10;
-    }
-    .dot {
-      width: 6px; height: 6px;
-      border-radius: 50%;
-      background: rgba(245,242,238,0.3);
-      cursor: pointer;
-      transition: all 0.3s;
-      border: none;
-    }
-    .dot.active {
-      background: var(--accent);
-      transform: scale(1.3);
-    }
-
-    /* Scroll indicator */
-    .scroll-hint {
-      position: absolute;
-      bottom: 2.5rem;
-      right: 3rem;
-      z-index: 10;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.4rem;
-      opacity: 0.4;
-      animation: fadeUpDown 2s ease-in-out infinite;
-    }
-    .scroll-hint span {
-      font-size: 0.6rem;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      writing-mode: vertical-rl;
-    }
-    .scroll-hint::after {
-      content: '';
-      width: 1px;
-      height: 40px;
-      background: var(--white);
-    }
-    @keyframes fadeUpDown {
-      0%, 100% { transform: translateY(0); opacity: 0.4; }
-      50% { transform: translateY(6px); opacity: 0.6; }
-    }
-
-    /* ── GALLERY SECTION ── */
-    #gallery {
-      background: var(--white);
-      color: var(--text);
-      padding: 6rem 3rem;
-    }
-    .section-header {
-      text-align: center;
-      margin-bottom: 4rem;
-    }
-    .section-header h2 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(2rem, 4vw, 3.5rem);
-      font-weight: 300;
-      color: var(--text);
-      letter-spacing: 0.08em;
-    }
-    .section-header .rule {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      justify-content: center;
-      margin-top: 0.8rem;
-    }
-    .section-header .rule::before,
-    .section-header .rule::after {
-      content: '';
-      height: 1px;
-      width: 60px;
-      background: var(--accent);
-    }
-    .section-header .rule span {
-      font-size: 0.65rem;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      color: var(--accent);
-    }
-
-    /* Masonry grid */
-    .gallery-grid {
-      columns: 3;
-      column-gap: 1.2rem;
-      max-width: 1400px;
-      margin: 0 auto;
-    }
+    .slide::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(10,10,10,0.2) 0%, rgba(10,10,10,0.5) 100%); }
+    .slide-placeholder { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; z-index: 1; }
+    .slide-placeholder svg { width: 80px; height: 80px; opacity: 0.15; }
+    .hero-text { position: absolute; bottom: 12%; left: 50%; transform: translateX(-50%); text-align: center; z-index: 10; white-space: nowrap; }
+    .hero-text h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(3rem, 8vw, 7rem); font-weight: 300; letter-spacing: 0.15em; line-height: 1; text-shadow: 0 2px 40px rgba(0,0,0,0.6); }
+    .hero-text h1 em { font-style: italic; color: var(--accent); }
+    .hero-text p { margin-top: 0.8rem; font-size: 0.7rem; letter-spacing: 0.35em; text-transform: uppercase; color: rgba(245,242,238,0.55); }
+    .slide-dots { position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%); display: flex; gap: 0.6rem; z-index: 10; }
+    .dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(245,242,238,0.3); cursor: pointer; transition: all 0.3s; border: none; }
+    .dot.active { background: var(--accent); transform: scale(1.3); }
+    .scroll-hint { position: absolute; bottom: 2.5rem; right: 3rem; z-index: 10; display: flex; flex-direction: column; align-items: center; gap: 0.4rem; opacity: 0.4; animation: fadeUpDown 2s ease-in-out infinite; }
+    .scroll-hint span { font-size: 0.6rem; letter-spacing: 0.25em; text-transform: uppercase; writing-mode: vertical-rl; }
+    .scroll-hint::after { content: ''; width: 1px; height: 40px; background: var(--white); }
+    @keyframes fadeUpDown { 0%, 100% { transform: translateY(0); opacity: 0.4; } 50% { transform: translateY(6px); opacity: 0.6; } }
+    #gallery { background: var(--white); color: var(--text); padding: 6rem 3rem; }
+    .section-header { text-align: center; margin-bottom: 4rem; }
+    .section-header h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 4vw, 3.5rem); font-weight: 300; color: var(--text); letter-spacing: 0.08em; }
+    .section-header .rule { display: flex; align-items: center; gap: 1rem; justify-content: center; margin-top: 0.8rem; }
+    .section-header .rule::before, .section-header .rule::after { content: ''; height: 1px; width: 60px; background: var(--accent); }
+    .section-header .rule span { font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--accent); }
+    .gallery-grid { columns: 3; column-gap: 1.2rem; max-width: 1400px; margin: 0 auto; }
     @media (max-width: 900px) { .gallery-grid { columns: 2; } }
     @media (max-width: 550px) { .gallery-grid { columns: 1; } }
-
-    .gallery-item {
-      break-inside: avoid;
-      margin-bottom: 1.2rem;
-      overflow: hidden;
-      cursor: pointer;
-      position: relative;
-      background: var(--light);
-    }
-    .gallery-item img {
-      width: 100%;
-      display: block;
-      transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    }
+    .gallery-item { break-inside: avoid; margin-bottom: 1.2rem; overflow: hidden; cursor: pointer; position: relative; background: var(--light); animation: fadeIn 0.6s ease forwards; }
+    .gallery-item img { width: 100%; display: block; transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
     .gallery-item:hover img { transform: scale(1.04); }
-    .gallery-item .overlay {
-      position: absolute;
-      inset: 0;
-      background: rgba(10,10,10,0);
-      transition: background 0.4s;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
+    .gallery-item .overlay { position: absolute; inset: 0; background: rgba(10,10,10,0); transition: background 0.4s; display: flex; align-items: center; justify-content: center; }
     .gallery-item:hover .overlay { background: rgba(10,10,10,0.35); }
-    .overlay-icon {
-      opacity: 0;
-      transition: opacity 0.4s;
-      color: white;
-    }
+    .overlay-icon { opacity: 0; transition: opacity 0.4s; color: white; }
     .gallery-item:hover .overlay-icon { opacity: 1; }
-
-    /* Empty state */
-    .gallery-empty {
-      text-align: center;
-      padding: 5rem 2rem;
-      color: #999;
-      display: none;
-    }
+    .gallery-empty { text-align: center; padding: 5rem 2rem; color: #999; display: none; }
     .gallery-empty.visible { display: block; }
     .gallery-empty p { font-size: 1rem; margin-top: 0.5rem; }
-
-    /* ── LIGHTBOX ── */
-    #lightbox {
-      position: fixed;
-      inset: 0;
-      background: rgba(10,10,10,0.96);
-      z-index: 1000;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.4s;
-    }
-    #lightbox.open {
-      opacity: 1;
-      pointer-events: all;
-    }
-    #lightbox img {
-      max-width: 90vw;
-      max-height: 88vh;
-      object-fit: contain;
-      box-shadow: 0 20px 80px rgba(0,0,0,0.8);
-    }
-    #lightbox-caption {
-      position: absolute;
-      bottom: 2rem;
-      left: 50%;
-      transform: translateX(-50%);
-      font-family: 'Cormorant Garamond', serif;
-      font-style: italic;
-      font-size: 1.1rem;
-      color: rgba(245,242,238,0.6);
-      letter-spacing: 0.05em;
-      text-align: center;
-    }
-    #lightbox-close {
-      position: absolute;
-      top: 1.5rem;
-      right: 2rem;
-      background: none;
-      border: none;
-      color: rgba(245,242,238,0.5);
-      font-size: 2rem;
-      cursor: pointer;
-      transition: color 0.3s;
-      line-height: 1;
-    }
+    #lightbox { position: fixed; inset: 0; background: rgba(10,10,10,0.96); z-index: 1000; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.4s; }
+    #lightbox.open { opacity: 1; pointer-events: all; }
+    #lightbox img { max-width: 90vw; max-height: 88vh; object-fit: contain; box-shadow: 0 20px 80px rgba(0,0,0,0.8); }
+    #lightbox-caption { position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%); font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.1rem; color: rgba(245,242,238,0.6); letter-spacing: 0.05em; text-align: center; }
+    #lightbox-close { position: absolute; top: 1.5rem; right: 2rem; background: none; border: none; color: rgba(245,242,238,0.5); font-size: 2rem; cursor: pointer; transition: color 0.3s; line-height: 1; }
     #lightbox-close:hover { color: var(--accent); }
-    .lightbox-nav {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      background: none;
-      border: 1px solid rgba(245,242,238,0.2);
-      color: rgba(245,242,238,0.6);
-      width: 48px; height: 48px;
-      display: flex; align-items: center; justify-content: center;
-      cursor: pointer;
-      transition: all 0.3s;
-      font-size: 1.2rem;
-    }
+    .lightbox-nav { position: absolute; top: 50%; transform: translateY(-50%); background: none; border: 1px solid rgba(245,242,238,0.2); color: rgba(245,242,238,0.6); width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.3s; font-size: 1.2rem; }
     .lightbox-nav:hover { border-color: var(--accent); color: var(--accent); }
-    #lb-prev { left: 1.5rem; }
-    #lb-next { right: 1.5rem; }
-
-    /* ── ABOUT STRIP ── */
-    #about {
-      background: var(--black);
-      padding: 6rem 3rem;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 4rem;
-      align-items: center;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
+    #lb-prev { left: 1.5rem; } #lb-next { right: 1.5rem; }
+    #about { background: var(--black); padding: 6rem 3rem; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; max-width: 1200px; margin: 0 auto; }
     @media (max-width: 768px) { #about { grid-template-columns: 1fr; } }
-    .about-text h2 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 2.8rem;
-      font-weight: 300;
-      line-height: 1.15;
-      letter-spacing: 0.05em;
-      margin-bottom: 1.5rem;
-    }
+    .about-text h2 { font-family: 'Cormorant Garamond', serif; font-size: 2.8rem; font-weight: 300; line-height: 1.15; letter-spacing: 0.05em; margin-bottom: 1.5rem; }
     .about-text h2 em { color: var(--accent); font-style: italic; }
-    .about-text p {
-      font-size: 0.88rem;
-      line-height: 1.9;
-      color: rgba(245,242,238,0.6);
-      margin-bottom: 1rem;
-    }
-    .about-visual {
-      position: relative;
-      height: 400px;
-      background: var(--mid);
-      overflow: hidden;
-    }
-    .about-visual::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(135deg, #1a1008, #3d2b1f);
-      opacity: 0.8;
-    }
-    .about-visual-placeholder {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: rgba(245,242,238,0.1);
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.1rem;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      z-index: 1;
-    }
-    .about-visual-corner {
-      position: absolute;
-      bottom: 1.5rem;
-      right: 1.5rem;
-      width: 60px;
-      height: 60px;
-      border-right: 2px solid var(--accent);
-      border-bottom: 2px solid var(--accent);
-      z-index: 2;
-    }
-    .about-visual-corner2 {
-      position: absolute;
-      top: 1.5rem;
-      left: 1.5rem;
-      width: 60px;
-      height: 60px;
-      border-left: 2px solid var(--accent);
-      border-top: 2px solid var(--accent);
-      z-index: 2;
-    }
-
-    /* ── CONTACT ── */
-    #contact {
-      background: var(--mid);
-      padding: 5rem 3rem;
-      text-align: center;
-      border-top: 1px solid rgba(200,169,126,0.15);
-    }
-    #contact h2 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 2.5rem;
-      font-weight: 300;
-      letter-spacing: 0.08em;
-      margin-bottom: 0.5rem;
-    }
-    #contact p {
-      font-size: 0.82rem;
-      letter-spacing: 0.15em;
-      color: rgba(245,242,238,0.4);
-      margin-bottom: 2.5rem;
-    }
-    .contact-email {
-      display: inline-block;
-      color: var(--accent);
-      text-decoration: none;
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.5rem;
-      font-style: italic;
-      letter-spacing: 0.05em;
-      border-bottom: 1px solid rgba(200,169,126,0.3);
-      padding-bottom: 0.3rem;
-      transition: border-color 0.3s;
-    }
+    .about-text p { font-size: 0.88rem; line-height: 1.9; color: rgba(245,242,238,0.6); margin-bottom: 1rem; }
+    .about-visual { position: relative; height: 400px; background: var(--mid); overflow: hidden; }
+    .about-visual::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, #1a1008, #3d2b1f); opacity: 0.8; }
+    .about-visual-placeholder { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; color: rgba(245,242,238,0.1); font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; letter-spacing: 0.3em; text-transform: uppercase; z-index: 1; }
+    .about-visual-corner { position: absolute; bottom: 1.5rem; right: 1.5rem; width: 60px; height: 60px; border-right: 2px solid var(--accent); border-bottom: 2px solid var(--accent); z-index: 2; }
+    .about-visual-corner2 { position: absolute; top: 1.5rem; left: 1.5rem; width: 60px; height: 60px; border-left: 2px solid var(--accent); border-top: 2px solid var(--accent); z-index: 2; }
+    #contact { background: var(--mid); padding: 5rem 3rem; text-align: center; border-top: 1px solid rgba(200,169,126,0.15); }
+    #contact h2 { font-family: 'Cormorant Garamond', serif; font-size: 2.5rem; font-weight: 300; letter-spacing: 0.08em; margin-bottom: 0.5rem; }
+    #contact p { font-size: 0.82rem; letter-spacing: 0.15em; color: rgba(245,242,238,0.4); margin-bottom: 2.5rem; }
+    .contact-email { display: inline-block; color: var(--accent); text-decoration: none; font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-style: italic; letter-spacing: 0.05em; border-bottom: 1px solid rgba(200,169,126,0.3); padding-bottom: 0.3rem; transition: border-color 0.3s; }
     .contact-email:hover { border-color: var(--accent); }
-
-    /* ── FOOTER ── */
-    footer {
-      background: var(--black);
-      padding: 2rem 3rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      border-top: 1px solid rgba(245,242,238,0.05);
-    }
-    footer p {
-      font-size: 0.7rem;
-      letter-spacing: 0.15em;
-      color: rgba(245,242,238,0.2);
-      text-transform: uppercase;
-    }
-    .footer-admin-link {
-      font-size: 0.65rem;
-      letter-spacing: 0.15em;
-      color: rgba(245,242,238,0.15);
-      text-decoration: none;
-      text-transform: uppercase;
-      transition: color 0.3s;
-    }
+    footer { background: var(--black); padding: 2rem 3rem; display: flex; align-items: center; justify-content: space-between; border-top: 1px solid rgba(245,242,238,0.05); }
+    footer p { font-size: 0.7rem; letter-spacing: 0.15em; color: rgba(245,242,238,0.2); text-transform: uppercase; }
+    .footer-admin-link { font-size: 0.65rem; letter-spacing: 0.15em; color: rgba(245,242,238,0.15); text-decoration: none; text-transform: uppercase; transition: color 0.3s; }
     .footer-admin-link:hover { color: var(--accent); }
-
-    /* ── LOADING ANIMATION ── */
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    .gallery-item {
-      animation: fadeIn 0.6s ease forwards;
-    }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
   </style>
 </head>
 <body>
-
-<!-- NAV -->
 <nav id="navbar">
-  <a href="#" class="nav-logo">KDR<span>Pics</span></a>
+  <a href="#" class="nav-logo">KDR<span>Moments &amp; Milestones</span></a>
   <ul class="nav-links">
     <li><a href="#gallery">Gallery</a></li>
     <li><a href="#about">About</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
 </nav>
-
-<!-- HERO -->
 <section id="hero">
-  <div class="slide slide-1 active">
-    <div class="slide-placeholder">
-      <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1">
-        <rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/>
-        <polyline points="21 15 16 10 5 21"/>
-      </svg>
-    </div>
-  </div>
-  <div class="slide slide-2">
-    <div class="slide-placeholder">
-      <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1">
-        <rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/>
-        <polyline points="21 15 16 10 5 21"/>
-      </svg>
-    </div>
-  </div>
-  <div class="slide slide-3">
-    <div class="slide-placeholder">
-      <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1">
-        <rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/>
-        <polyline points="21 15 16 10 5 21"/>
-      </svg>
-    </div>
-  </div>
-
+  <div class="slide slide-1 active"><div class="slide-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div></div>
+  <div class="slide slide-2"><div class="slide-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div></div>
+  <div class="slide slide-3"><div class="slide-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div></div>
   <div class="hero-text">
-    <h1>KDR<em>Pics</em></h1>
-    <p>Photography &nbsp;·&nbsp; Moments Worth Keeping</p>
+    <h1>KDR<em>Moments &amp; Milestones</em></h1>
+    <p>Photography &nbsp;&middot;&nbsp; Moments Worth Keeping</p>
   </div>
-
   <div class="slide-dots" id="dots"></div>
   <div class="scroll-hint"><span>Scroll</span></div>
 </section>
-
-<!-- GALLERY -->
 <section id="gallery">
-  <div class="section-header">
-    <h2>Portfolio</h2>
-    <div class="rule"><span>Work</span></div>
-  </div>
-  <div class="gallery-grid" id="galleryGrid">
-    <!-- Photos injected by JS from gallery.json -->
-  </div>
+  <div class="section-header"><h2>Portfolio</h2><div class="rule"><span>Work</span></div></div>
+  <div class="gallery-grid" id="galleryGrid"></div>
   <div class="gallery-empty" id="galleryEmpty">
-    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#ccc" stroke-width="1.2" style="margin:0 auto 1rem; display:block">
-      <rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/>
-      <polyline points="21 15 16 10 5 21"/>
-    </svg>
+    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#ccc" stroke-width="1.2" style="margin:0 auto 1rem;display:block"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
     <p>Photos are on their way — check back soon.</p>
   </div>
 </section>
-
-<!-- ABOUT -->
-<section>
-  <div id="about">
-    <div class="about-text">
-      <h2>The eye behind<br>the <em>lens</em></h2>
-      <p>KDRPics captures the moments that matter — sports, events, portraits, and the in-between. Every shot is about finding light, emotion, and story in a single frame.</p>
-      <p>Based in Atlanta, available everywhere.</p>
-    </div>
-    <div class="about-visual">
-      <div class="about-visual-placeholder">Photography</div>
-      <div class="about-visual-corner"></div>
-      <div class="about-visual-corner2"></div>
-    </div>
+<section><div id="about">
+  <div class="about-text">
+    <h2>The eye behind<br>the <em>lens</em></h2>
+    <p>KDR Moments &amp; Milestones Photography captures the moments that matter — sports, events, portraits, and the in-between.</p>
+    <p>Based in Atlanta, available everywhere.</p>
   </div>
-</section>
-
-<!-- CONTACT -->
+  <div class="about-visual"><div class="about-visual-placeholder">Photography</div><div class="about-visual-corner"></div><div class="about-visual-corner2"></div></div>
+</div></section>
 <section id="contact">
   <h2>Get in Touch</h2>
-  <p>Inquiries &nbsp;·&nbsp; Bookings &nbsp;·&nbsp; Licensing</p>
-  <a href="mailto:hello@kdrpics.com" class="contact-email">hello@kdrpics.com</a>
+  <p>Inquiries &nbsp;&middot;&nbsp; Bookings &nbsp;&middot;&nbsp; Licensing</p>
+  <a href="mailto:rogers9363@bellsouth.net" class="contact-email">rogers9363@bellsouth.net</a>
 </section>
-
-<!-- FOOTER -->
 <footer>
-  <p>© <span id="year"></span> KDRPics · All Rights Reserved</p>
+  <p>&copy; <span id="year"></span> KDR Moments &amp; Milestones Photography &middot; All Rights Reserved</p>
   <a href="/admin/" class="footer-admin-link">Admin</a>
 </footer>
-
-<!-- LIGHTBOX -->
 <div id="lightbox">
   <button id="lightbox-close">&#x2715;</button>
   <button class="lightbox-nav" id="lb-prev">&#8592;</button>
@@ -589,119 +140,32 @@
   <button class="lightbox-nav" id="lb-next">&#8594;</button>
   <div id="lightbox-caption"></div>
 </div>
-
 <script>
-  // ── Year
   document.getElementById('year').textContent = new Date().getFullYear();
-
-  // ── Nav scroll effect
-  window.addEventListener('scroll', () => {
-    document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 60);
-  });
-
-  // ── Slideshow
+  window.addEventListener('scroll', () => { document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 60); });
   const slides = document.querySelectorAll('.slide');
   const dotsContainer = document.getElementById('dots');
   let current = 0;
-
-  slides.forEach((_, i) => {
-    const d = document.createElement('button');
-    d.className = 'dot' + (i === 0 ? ' active' : '');
-    d.onclick = () => goTo(i);
-    dotsContainer.appendChild(d);
-  });
-
-  function goTo(n) {
-    slides[current].classList.remove('active');
-    document.querySelectorAll('.dot')[current].classList.remove('active');
-    current = (n + slides.length) % slides.length;
-    slides[current].classList.add('active');
-    document.querySelectorAll('.dot')[current].classList.add('active');
-  }
+  slides.forEach((_, i) => { const d = document.createElement('button'); d.className = 'dot' + (i === 0 ? ' active' : ''); d.onclick = () => goTo(i); dotsContainer.appendChild(d); });
+  function goTo(n) { slides[current].classList.remove('active'); document.querySelectorAll('.dot')[current].classList.remove('active'); current = (n + slides.length) % slides.length; slides[current].classList.add('active'); document.querySelectorAll('.dot')[current].classList.add('active'); }
   setInterval(() => goTo(current + 1), 5000);
-
-  // ── Gallery — load from gallery.json (managed by CMS)
   let photos = [];
-
-  async function loadGallery() {
-    try {
-      const res = await fetch('/gallery.json');
-      if (!res.ok) throw new Error('No gallery data');
-      photos = await res.json();
-    } catch {
-      photos = [];
-    }
-    renderGallery();
-  }
-
+  async function loadGallery() { try { const res = await fetch('/gallery.json'); if (!res.ok) throw new Error(); photos = await res.json(); } catch { photos = []; } renderGallery(); }
   function renderGallery() {
-    const grid = document.getElementById('galleryGrid');
-    const empty = document.getElementById('galleryEmpty');
-    grid.innerHTML = '';
-
-    if (!photos.length) {
-      empty.classList.add('visible');
-      return;
-    }
+    const grid = document.getElementById('galleryGrid'); const empty = document.getElementById('galleryEmpty'); grid.innerHTML = '';
+    if (!photos.length) { empty.classList.add('visible'); return; }
     empty.classList.remove('visible');
-
-    photos.forEach((photo, i) => {
-      const item = document.createElement('div');
-      item.className = 'gallery-item';
-      item.style.animationDelay = (i * 0.06) + 's';
-      item.innerHTML = `
-        <img src="${photo.image}" alt="${photo.title || ''}" loading="lazy">
-        <div class="overlay">
-          <div class="overlay-icon">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5">
-              <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
-              <line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/>
-            </svg>
-          </div>
-        </div>
-      `;
-      item.addEventListener('click', () => openLightbox(i));
-      grid.appendChild(item);
-    });
-
-    // Also populate hero slides with first 3 photos
-    const heroSlides = document.querySelectorAll('.slide');
-    photos.slice(0, 3).forEach((photo, i) => {
-      if (heroSlides[i]) {
-        heroSlides[i].style.backgroundImage = `url(${photo.image})`;
-        heroSlides[i].querySelector('.slide-placeholder').style.display = 'none';
-      }
-    });
+    photos.forEach((photo, i) => { const item = document.createElement('div'); item.className = 'gallery-item'; item.style.animationDelay = (i*0.06)+'s'; item.innerHTML = '<img src="'+photo.image+'" alt="'+(photo.title||'')+'" loading="lazy"><div class="overlay"><div class="overlay-icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div></div>'; item.addEventListener('click', () => openLightbox(i)); grid.appendChild(item); });
+    const heroSlides = document.querySelectorAll('.slide'); photos.slice(0,3).forEach((photo,i) => { if(heroSlides[i]){ heroSlides[i].style.backgroundImage='url('+photo.image+')'; heroSlides[i].querySelector('.slide-placeholder').style.display='none'; } });
   }
-
-  // ── Lightbox
-  let lbIndex = 0;
-  const lb = document.getElementById('lightbox');
-  const lbImg = document.getElementById('lb-img');
-  const lbCap = document.getElementById('lightbox-caption');
-
-  function openLightbox(i) {
-    lbIndex = i;
-    lbImg.src = photos[i].image;
-    lbCap.textContent = photos[i].title || '';
-    lb.classList.add('open');
-    document.body.style.overflow = 'hidden';
-  }
-  function closeLightbox() {
-    lb.classList.remove('open');
-    document.body.style.overflow = '';
-  }
-  document.getElementById('lightbox-close').onclick = closeLightbox;
-  document.getElementById('lb-prev').onclick = () => { lbIndex = (lbIndex - 1 + photos.length) % photos.length; lbImg.src = photos[lbIndex].image; lbCap.textContent = photos[lbIndex].title || ''; };
-  document.getElementById('lb-next').onclick = () => { lbIndex = (lbIndex + 1) % photos.length; lbImg.src = photos[lbIndex].image; lbCap.textContent = photos[lbIndex].title || ''; };
-  lb.addEventListener('click', e => { if (e.target === lb) closeLightbox(); });
-  document.addEventListener('keydown', e => {
-    if (!lb.classList.contains('open')) return;
-    if (e.key === 'Escape') closeLightbox();
-    if (e.key === 'ArrowLeft') document.getElementById('lb-prev').click();
-    if (e.key === 'ArrowRight') document.getElementById('lb-next').click();
-  });
-
+  let lbIndex=0; const lb=document.getElementById('lightbox'); const lbImg=document.getElementById('lb-img'); const lbCap=document.getElementById('lightbox-caption');
+  function openLightbox(i){lbIndex=i;lbImg.src=photos[i].image;lbCap.textContent=photos[i].title||'';lb.classList.add('open');document.body.style.overflow='hidden';}
+  function closeLightbox(){lb.classList.remove('open');document.body.style.overflow='';}
+  document.getElementById('lightbox-close').onclick=closeLightbox;
+  document.getElementById('lb-prev').onclick=()=>{lbIndex=(lbIndex-1+photos.length)%photos.length;lbImg.src=photos[lbIndex].image;lbCap.textContent=photos[lbIndex].title||'';};
+  document.getElementById('lb-next').onclick=()=>{lbIndex=(lbIndex+1)%photos.length;lbImg.src=photos[lbIndex].image;lbCap.textContent=photos[lbIndex].title||'';};
+  lb.addEventListener('click',e=>{if(e.target===lb)closeLightbox();});
+  document.addEventListener('keydown',e=>{if(!lb.classList.contains('open'))return;if(e.key==='Escape')closeLightbox();if(e.key==='ArrowLeft')document.getElementById('lb-prev').click();if(e.key==='ArrowRight')document.getElementById('lb-next').click();});
   loadGallery();
 </script>
 </body>
