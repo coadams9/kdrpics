@@ -30,7 +30,7 @@
     .hero-text { position: absolute; bottom: 12%; left: 50%; transform: translateX(-50%); text-align: center; z-index: 10; }
     .hero-text h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(4rem, 10vw, 9rem); font-weight: 300; letter-spacing: 0.3em; line-height: 1; text-shadow: 0 2px 40px rgba(0,0,0,0.6); white-space: nowrap; }
     .hero-text h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.4rem, 3.5vw, 3rem); font-weight: 300; font-style: italic; letter-spacing: 0.18em; color: var(--accent); margin-top: 0.2rem; text-shadow: 0 2px 30px rgba(0,0,0,0.5); white-space: nowrap; }
-    .hero-text p { margin-top: 1rem; font-size: 0.7rem; letter-spacing: 0.35em; text-transform: uppercase; color: rgba(245,242,238,0.55); }
+    .hero-text p { margin-top: 1rem; font-size: 0.7rem; letter-spacing: 0.35em; text-transform: uppercase; color: rgba(245,242,238,0.55); white-space: nowrap; }
     .slide-dots { position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%); display: flex; gap: 0.6rem; z-index: 10; }
     .dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(245,242,238,0.3); cursor: pointer; transition: all 0.3s; border: none; }
     .dot.active { background: var(--accent); transform: scale(1.3); }
@@ -76,11 +76,19 @@
     .about-visual-placeholder { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; color: rgba(245,242,238,0.1); font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; letter-spacing: 0.3em; text-transform: uppercase; z-index: 1; }
     .about-visual-corner { position: absolute; bottom: 1.5rem; right: 1.5rem; width: 60px; height: 60px; border-right: 2px solid var(--accent); border-bottom: 2px solid var(--accent); z-index: 2; }
     .about-visual-corner2 { position: absolute; top: 1.5rem; left: 1.5rem; width: 60px; height: 60px; border-left: 2px solid var(--accent); border-top: 2px solid var(--accent); z-index: 2; }
-    #contact { background: var(--mid); padding: 5rem 3rem; text-align: center; border-top: 1px solid rgba(200,169,126,0.15); }
-    #contact h2 { font-family: 'Cormorant Garamond', serif; font-size: 2.5rem; font-weight: 300; letter-spacing: 0.08em; margin-bottom: 0.5rem; }
-    #contact p { font-size: 0.82rem; letter-spacing: 0.15em; color: rgba(245,242,238,0.4); margin-bottom: 2.5rem; }
-    .contact-email { display: inline-block; color: var(--accent); text-decoration: none; font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-style: italic; letter-spacing: 0.05em; border-bottom: 1px solid rgba(200,169,126,0.3); padding-bottom: 0.3rem; transition: border-color 0.3s; }
-    .contact-email:hover { border-color: var(--accent); }
+    #contact { background: var(--mid); padding: 6rem 3rem; text-align: center; border-top: 1px solid rgba(200,169,126,0.15); }
+    #contact h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 300; letter-spacing: 0.08em; margin-bottom: 1.2rem; }
+    #contact .contact-intro { font-family: 'Cormorant Garamond', serif; font-size: clamp(1rem, 2vw, 1.35rem); font-style: italic; line-height: 1.7; color: rgba(245,242,238,0.65); max-width: 600px; margin: 0 auto 3rem; }
+    .contact-form { max-width: 560px; margin: 0 auto; text-align: left; }
+    .contact-form .form-field { margin-bottom: 2.2rem; }
+    .contact-form label { display: block; font-size: 0.65rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.6rem; }
+    .contact-form input, .contact-form textarea { width: 100%; background: transparent; border: none; border-bottom: 1px solid rgba(245,242,238,0.25); color: var(--white); font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-style: italic; padding: 0.4rem 0 0.6rem; outline: none; transition: border-color 0.3s; resize: none; }
+    .contact-form input::placeholder, .contact-form textarea::placeholder { color: rgba(245,242,238,0.25); }
+    .contact-form input:focus, .contact-form textarea:focus { border-bottom-color: var(--accent); }
+    .contact-form textarea { min-height: 100px; }
+    .contact-submit { display: block; margin: 2.5rem auto 0; background: transparent; border: 1px solid rgba(245,242,238,0.35); color: var(--white); font-family: 'Montserrat', sans-serif; font-size: 0.65rem; letter-spacing: 0.25em; text-transform: uppercase; padding: 1rem 3rem; cursor: pointer; transition: all 0.3s; }
+    .contact-submit:hover { border-color: var(--accent); color: var(--accent); }
+    .contact-success { display: none; margin-top: 1.5rem; font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.2rem; color: var(--accent); text-align: center; }
     footer { background: var(--black); padding: 2rem 3rem; display: flex; align-items: center; justify-content: space-between; border-top: 1px solid rgba(245,242,238,0.05); }
     footer p { font-size: 0.7rem; letter-spacing: 0.15em; color: rgba(245,242,238,0.2); text-transform: uppercase; }
     .footer-admin-link { font-size: 0.65rem; letter-spacing: 0.15em; color: rgba(245,242,238,0.15); text-decoration: none; text-transform: uppercase; transition: color 0.3s; }
@@ -104,7 +112,7 @@
   <div class="hero-text">
     <h1>KDR</h1>
     <h2>Moments &amp; Milestones</h2>
-    <p>Photography &nbsp;&middot;&nbsp; Capturing Moments that Matter Most</p>
+    <p>Photography &nbsp;&middot;&nbsp; Capturing Moments That Matter Most</p>
   </div>
   <div class="slide-dots" id="dots"></div>
   <div class="scroll-hint"><span>Scroll</span></div>
@@ -114,21 +122,38 @@
   <div class="gallery-grid" id="galleryGrid"></div>
   <div class="gallery-empty" id="galleryEmpty">
     <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#ccc" stroke-width="1.2" style="margin:0 auto 1rem;display:block"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-    <p>Photos are on their way - check back soon.</p>
+    <p>Photos are on their way — check back soon.</p>
   </div>
 </section>
 <section><div id="about">
   <div class="about-text">
-    <h2>The eye behind<br>the <em>lens</em></h2>
-    <p>KDR Moments &amp; Milestones Photography captures the moments that matter - sports, events, portraits, and the in-between. Every shot is about finding light, emotion, and story in a single frame.</p>
+    <h2>The Eye Behind<br>the <em>Lens</em></h2>
+    <p>KDR Moments &amp; Milestones Photography captures the moments that matter — sports, events, seniors, portraits, and the in-between. Every shot is about finding light, emotion, and story in a single frame.</p>
     <p>Based in Atlanta, available everywhere.</p>
   </div>
   <div class="about-visual"><div class="about-visual-placeholder">Photography</div><div class="about-visual-corner"></div><div class="about-visual-corner2"></div></div>
 </div></section>
 <section id="contact">
   <h2>Get in Touch</h2>
-  <p>Inquiries &nbsp;&middot;&nbsp; Bookings &nbsp;&middot;&nbsp; Licensing</p>
-  <a href="mailto:kdrpics@gmail.com" class="contact-email">kdrpics@gmail.com</a>
+  <p class="contact-intro">Tell me a little about the event you're planning and let me know the best way to reach you. For a faster reply, text me at 404.788.3253</p>
+  <form class="contact-form" name="contact" netlify netlify-honeypot="bot-field">
+    <input type="hidden" name="form-name" value="contact">
+    <p style="display:none"><input name="bot-field"></p>
+    <div class="form-field">
+      <label for="name">Name *</label>
+      <input type="text" id="name" name="name" placeholder="John Doe" required>
+    </div>
+    <div class="form-field">
+      <label for="email">Email Address *</label>
+      <input type="email" id="email" name="email" placeholder="Your email address" required>
+    </div>
+    <div class="form-field">
+      <label for="message">Message *</label>
+      <textarea id="message" name="message" placeholder="Your message" required></textarea>
+    </div>
+    <button type="submit" class="contact-submit">Send Message</button>
+    <p class="contact-success" id="contactSuccess">Thank you! I'll be in touch soon.</p>
+  </form>
 </section>
 <footer>
   <p>&copy; <span id="year"></span> KDR Moments &amp; Milestones Photography &middot; All Rights Reserved</p>
@@ -168,6 +193,18 @@
   lb.addEventListener('click',e=>{if(e.target===lb)closeLightbox();});
   document.addEventListener('keydown',e=>{if(!lb.classList.contains('open'))return;if(e.key==='Escape')closeLightbox();if(e.key==='ArrowLeft')document.getElementById('lb-prev').click();if(e.key==='ArrowRight')document.getElementById('lb-next').click();});
   loadGallery();
+  const contactForm = document.querySelector('.contact-form');
+  if (contactForm) {
+    contactForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const data = new FormData(contactForm);
+      try {
+        await fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: new URLSearchParams(data).toString() });
+        contactForm.reset();
+        document.getElementById('contactSuccess').style.display = 'block';
+      } catch { alert('Something went wrong. Please try again or text 404.788.3253'); }
+    });
+  }
 </script>
 </body>
 </html>
