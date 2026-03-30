@@ -27,10 +27,10 @@
     .slide::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(10,10,10,0.2) 0%, rgba(10,10,10,0.5) 100%); }
     .slide-placeholder { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; z-index: 1; }
     .slide-placeholder svg { width: 80px; height: 80px; opacity: 0.15; }
-    .hero-text { position: absolute; bottom: 12%; left: 50%; transform: translateX(-50%); text-align: center; z-index: 10; white-space: nowrap; }
-    .hero-text h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(3rem, 8vw, 7rem); font-weight: 300; letter-spacing: 0.15em; line-height: 1; text-shadow: 0 2px 40px rgba(0,0,0,0.6); }
-    .hero-text h1 em { font-style: italic; color: var(--accent); }
-    .hero-text p { margin-top: 0.8rem; font-size: 0.7rem; letter-spacing: 0.35em; text-transform: uppercase; color: rgba(245,242,238,0.55); }
+    .hero-text { position: absolute; bottom: 12%; left: 50%; transform: translateX(-50%); text-align: center; z-index: 10; }
+    .hero-text h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(4rem, 10vw, 9rem); font-weight: 300; letter-spacing: 0.3em; line-height: 1; text-shadow: 0 2px 40px rgba(0,0,0,0.6); white-space: nowrap; }
+    .hero-text h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.4rem, 3.5vw, 3rem); font-weight: 300; font-style: italic; letter-spacing: 0.18em; color: var(--accent); margin-top: 0.2rem; text-shadow: 0 2px 30px rgba(0,0,0,0.5); white-space: nowrap; }
+    .hero-text p { margin-top: 1rem; font-size: 0.7rem; letter-spacing: 0.35em; text-transform: uppercase; color: rgba(245,242,238,0.55); }
     .slide-dots { position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%); display: flex; gap: 0.6rem; z-index: 10; }
     .dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(245,242,238,0.3); cursor: pointer; transition: all 0.3s; border: none; }
     .dot.active { background: var(--accent); transform: scale(1.3); }
@@ -102,8 +102,9 @@
   <div class="slide slide-2"><div class="slide-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div></div>
   <div class="slide slide-3"><div class="slide-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div></div>
   <div class="hero-text">
-    <h1>KDR<em>Moments &amp; Milestones</em></h1>
-    <p>Photography &nbsp;&middot;&nbsp; Moments Worth Keeping</p>
+    <h1>KDR</h1>
+    <h2>Moments &amp; Milestones</h2>
+    <p>Photography &nbsp;&middot;&nbsp; Capturing Moments that Matter Most</p>
   </div>
   <div class="slide-dots" id="dots"></div>
   <div class="scroll-hint"><span>Scroll</span></div>
@@ -113,13 +114,13 @@
   <div class="gallery-grid" id="galleryGrid"></div>
   <div class="gallery-empty" id="galleryEmpty">
     <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#ccc" stroke-width="1.2" style="margin:0 auto 1rem;display:block"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-    <p>Photos are on their way — check back soon.</p>
+    <p>Photos are on their way - check back soon.</p>
   </div>
 </section>
 <section><div id="about">
   <div class="about-text">
     <h2>The eye behind<br>the <em>lens</em></h2>
-    <p>KDR Moments &amp; Milestones Photography captures the moments that matter — sports, events, portraits, and the in-between.</p>
+    <p>KDR Moments &amp; Milestones Photography captures the moments that matter - sports, events, portraits, and the in-between. Every shot is about finding light, emotion, and story in a single frame.</p>
     <p>Based in Atlanta, available everywhere.</p>
   </div>
   <div class="about-visual"><div class="about-visual-placeholder">Photography</div><div class="about-visual-corner"></div><div class="about-visual-corner2"></div></div>
@@ -127,7 +128,7 @@
 <section id="contact">
   <h2>Get in Touch</h2>
   <p>Inquiries &nbsp;&middot;&nbsp; Bookings &nbsp;&middot;&nbsp; Licensing</p>
-  <a href="mailto:rogers9363@bellsouth.net" class="contact-email">rogers9363@bellsouth.net</a>
+  <a href="mailto:kdrpics@gmail.com" class="contact-email">kdrpics@gmail.com</a>
 </section>
 <footer>
   <p>&copy; <span id="year"></span> KDR Moments &amp; Milestones Photography &middot; All Rights Reserved</p>
