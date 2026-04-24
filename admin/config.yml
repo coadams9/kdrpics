@@ -2,7 +2,7 @@ backend:
   name: git-gateway
   branch: main
 
-media_folder: "public/images/gallery"
+media_folder: "images/gallery"
 public_folder: "/images/gallery"
 
 # Use Netlify Identity for authentication
