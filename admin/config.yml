@@ -24,4 +24,4 @@ collections:
       - { label: "Featured (show in hero slideshow)", name: "featured", widget: "boolean", default: false, required: false }
       - { label: "Date", name: "date", widget: "datetime", required: false }
       - { label: "Category", name: "category", widget: "select", required: false,
-          options: ["Sports", "Events", "Portraits", "Nature", "Other"] }
+          options: ["Seniors and Families", "Sports", "Events", "Portraits", "Nature", "Other"] }
