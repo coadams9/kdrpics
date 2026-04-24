@@ -10,6 +10,7 @@ public_folder: "/images/gallery"
 
 collections:
   - name: "gallery"
+    identifier_field: "image"
     label: "Gallery Photos"
     label_singular: "Photo"
     folder: "_data/gallery"
