@@ -6,7 +6,7 @@ media_folder: "public/images/gallery"
 public_folder: "/images/gallery"
 
 # Use Netlify Identity for authentication
-publish_mode: editorial_workflow
+# publish_mode: editorial_workflow
 
 collections:
   - name: "gallery"
